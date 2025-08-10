@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 
-const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+// const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+const API_URL = "http://localhost:5001"; // Change to your backend URL
 
 
 const Card = ({ children }) => (
@@ -37,6 +38,7 @@ export default function EShop() {
 
     // ✅ Fetch products from backend
     useEffect(() => {
+      setLoading(true);
       fetch(`${API_URL}/products`)
         .then(res => res.json())
         .then(data => {
@@ -47,7 +49,8 @@ export default function EShop() {
           }));
           setProducts(normalized);
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error(err))
+        .finally(() => setLoading(false));
 
         fetch(`${API_URL}/settings`)
         .then(res => res.json())
@@ -188,6 +191,7 @@ export default function EShop() {
       // This should POST to your backend to get the AsiaPay form/action URL
       // window.location.href = `https://test.asiapay.com/payment?orderId=${orderId}&amount=${getTotal()}`;
     };
+  
      
     if (showPayment) {
       return (

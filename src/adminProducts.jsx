@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react";
 
-const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+// const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+const API_URL = "http://localhost:5001"; // Change to your backend URL
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({ name: "", price: "", description: "", image: null });
   const [editingId, setEditingId] = useState(null);
+    const [loading, setLoading] = useState(false);
+  
 
-  // Fetch products
-  const fetchProducts = async () => {
+// Fetch products
+const fetchProducts = async () => {
+  try {
+    setLoading(true); // start loading
     const res = await fetch(`${API_URL}/products`);
     const data = await res.json();
     setProducts(data);
-  };
+  } catch (err) {
+    console.error("Error fetching products:", err);
+  } finally {
+    setLoading(false); // stop loading
+  }
+};
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+useEffect(() => {
+  fetchProducts();
+}, []);
 
   // Handle form input
   const handleChange = (e) => {
@@ -92,6 +102,14 @@ const addProduct = async (e) => {
       }
     }
   };
+
+  if (loading) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px", fontSize: "18px" }}>
+        ⏳ Loading , please wait...
+      </div>
+    );
+  }
 
   return (
     <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>

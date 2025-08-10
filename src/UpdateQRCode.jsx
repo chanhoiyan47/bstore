@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API_URL = "https://b-store-server.onrender.com"; // Change to your backend URL
+const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
 
 
 export default function UpdateQRCode() {

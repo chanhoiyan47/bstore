@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 
-const API_URL = "https://b-store-server.onrender.com"; // Change to your backend URL
-//https://b-store-server.onrender.com
+const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+
 
 const Card = ({ children }) => (
   <div className="border p-4 rounded shadow bg-white">{children}</div>

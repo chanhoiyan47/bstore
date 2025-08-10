@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
 
-const API_URL = "http://localhost:5001"; // Change to your backend URL
+const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+// const API_URL = "http://localhost:5001"; // Change to your backend URL
 
 export default function ReceiptHistory() {
   const [receipts, setReceipts] = useState([]);

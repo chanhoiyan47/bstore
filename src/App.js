@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import config from "./config";
 
 
-const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
+const API_URL = config.API_URL; // Change to your backend URL
 
 
 const Card = ({ children }) => (
@@ -160,6 +161,9 @@ export default function EShop() {
 
         const response = await fetch(`${API_URL}/upload`, {
           method: "POST",
+          headers:{
+            "api_key": config.API_KEY
+          },
           body: formData,
         });
     

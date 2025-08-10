@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import config from "./config";
 
-const API_URL = config.API_URL; // Change to your backend URL
+const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -41,9 +40,6 @@ const addProduct = async (e) => {
     try {
       const res = await fetch(`${API_URL}/products`, {
         method: "POST",
-        headers:{
-          "api_key": config.API_KEY
-        },
         body: formData,
       });
       alert("Add Prodcut Successfully!")
@@ -71,9 +67,6 @@ const addProduct = async (e) => {
     try {
       const res = await fetch(`${API_URL}/products/${id}`, {
         method: "PUT",
-        headers:{
-          "api_key": config.API_KEY
-        },
         body: formData,
       });
       setEditingId(null);

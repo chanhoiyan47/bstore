@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-const API_URL = "bstore-server-6ekc.onrender.com"; // Change to your backend URL
+const API_URL = "https://bstore-server-6ekc.onrender.com"; // Change to your backend URL
 
 
 const Card = ({ children }) => (
